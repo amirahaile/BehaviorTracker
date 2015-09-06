@@ -1,22 +1,20 @@
-# Student Behavior Tracking App
-A web app for teachers to track students' behavior.
-
-My mom is a middle school teacher who is incredibly fond of using technology in the classroom. She's currently using an iOs app, [ClassDojo](classdojo.com), to track her student's behavior. She likes its features, but was frustrated with the limited options and asked me to build her a web app with similar functionality, customized to her needs.
+# Hot Spot
+This web app uses GPS to save the location of your parked car. When you're ready to return to your vehicle, open the app and 'play the game'; the hotter you get, the closer you are!
 
 ## What is the goal of the project?
-The goal of this project is to deliver a web app that accurately tracks students' behavior. Each day, a student will start out with 100 points; as the day goes on, the user (my mom/the teacher) will subtract or add points of a set or customizable value. As more data is gathered, the user will have a visual representation (i.e. graph) of the students' behavior over time. An additional feature will be hosting multiple classes of students within one user's account.
+Create a fun web app that utilizes the entire stack and tests my understanding of various web technologies.
 
 ## Who is the target audience (can be just yourself)?
-Teachers, specifically of elementary or middle school, who would like to keep a daily, accurate record of their students' behavior for semester reports.
+Anyone who has trouble finding their parked car!
 
 ## What are your personal learning goals?
-I hope to solidify my understanding of the intersections of web technologies. I want to extend my comfort zone by challenging myself to attempt new things by exploring documentation and not limiting myself to the possibilities of which I'm already aware.
+I'm hoping this project will give me the opportunity to become more familiar with the languages and technologies I'll be implementing. Specifically, I'd like to explore the animations possible with CSS3 and JavaScript/jQuery and become more familiar with the Google Maps API. I'd also appreciate getting more practice with making HTTP requests.
 
 ## What technologies/frameworks/patterns will you be employing?
-I'll be using **Ruby on Rails** and **MVC patterns** to build my web app. I'll be utilizing **CSS3** and **JavaScript** for the UI. I may make use of **CarrierWave** to simplify and expedite the onboarding process for my users. I will attempt to deploy to **Heroku** since I want to ship my app for live use. I'll be using **RSpec** to test my app's functionality.
+I'll be using **HTML5**, **CSS3** + **Sass**, with **JavaScript** + **jQuery** for front-end structure, styling, and animation. The back-end will be handled by **Ruby on Rails** and its **MVC** architectural pattern, supported by a **PostGres** database (**SQLite** in the testing environment) in order to deploy to **Heroku**.
 
 ## What are the tech and/or skill dependencies of your project?
-I'll likely be using JavaScript, so that will have to be enabled in the browser. Other than that, there shouldn't be any dependencies.
+The user must have a browser available on their mobile phone with JavaScript enabled.
 
 ## What does success look like for this project? What does done mean?
-Success will be a deployed, functional app that meets my mom's needs in the classroom. I'll know the app is "done" when the app's core features are built and I have passing tests with at least 90% coverage.
+Success is achieved if the user not only finds their car, but has fun doing it. This project will be considered 'done' when a user can successfully locate their car using this web app alone. 
