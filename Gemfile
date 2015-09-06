@@ -32,8 +32,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 
-gem 'mini_magick', '~> 4.2.7'
-gem 'carrierwave', '~> 0.10.0'
+gem 'httparty', '~> 0.13.5'
+
+gem 'omniauth', '~> 1.2.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -52,11 +52,6 @@ GEM
       sass (>= 3.3.0)
     builder (3.2.2)
     byebug (6.0.2)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -77,6 +72,10 @@ GEM
       railties (>= 3.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    hashie (3.4.2)
+    httparty (0.13.5)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
@@ -92,12 +91,15 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.6.1)
-    mini_magick (4.2.10)
     mini_portile (0.6.2)
     minitest (5.8.0)
     multi_json (1.11.2)
+    multi_xml (0.5.5)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    omniauth (1.2.2)
+      hashie (>= 1.2, < 4)
+      rack (~> 1.0)
     pg (0.18.3)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -200,12 +202,12 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.3.5)
   byebug
-  carrierwave (~> 0.10.0)
   coffee-rails (~> 4.1.0)
   factory_girl_rails
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
-  mini_magick (~> 4.2.7)
+  omniauth
   pg
   pry-rails (~> 0.3.4)
   rails (= 4.2.4)
