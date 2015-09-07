@@ -1,0 +1,74 @@
+<h1 class="text-center">Register</h1>
+
+<% if flash[:notice] %>
+  <div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<br><br>
+
+<div class="col-xs-10 no-float center-block">
+  <%= form_for @user do |f| %>
+
+    <!-- TODO: Check error handling -->
+
+    <% if !@user.errors[:first_name].empty? %>
+      <div class="alert alert-danger" role="alert">
+        <p> <%= error_check(:first_name) %> </p>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :first_name, 'First Name' %> <span class="required">*</span>
+      <%= f.text_field :first_name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :last_name, 'Last Name' %>
+      <%= f.text_field :last_name, class: 'form-control' %>
+    </div>
+
+    <% if !@user.errors[:email].empty? %>
+      <div class="alert alert-danger" role="alert">
+        <p> <%= error_check(:email) %> </p>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :email %> <span class="required">*</span>
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
+
+    <% if !@user.errors[:password].empty? %>
+      <div class="alert alert-danger" role="alert">
+        <p> <%= error_check(:password) %> </p>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :password %> <span class="required">*</span>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+
+    <% if !@user.errors[:confirm_password].empty? %>
+      <div class="alert alert-danger" role="alert">
+        <p> <%= error_check(:confirm_password) %> </p>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :confirm_password, "Confirm Password" %>
+      <span class="required">*</span>
+      <%= f.password_field :confirm_password, class: 'form-control' %>
+    </div>
+
+    <% unless flash[:notice] %>
+      <%= f.submit "Register", class: 'btn btn-primary center-block' %>
+    <% else %>
+      <%= f.submit "Register", class: 'btn btn-primary center-block',
+                               disabled: "disabled" %>
+    <% end %>
+  <% end %>
+</div>
