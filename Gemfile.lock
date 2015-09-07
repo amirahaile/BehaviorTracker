@@ -204,10 +204,10 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   factory_girl_rails
-  httparty
+  httparty (~> 0.13.5)
   jbuilder (~> 2.0)
   jquery-rails
-  omniauth
+  omniauth (~> 1.2.2)
   pg
   pry-rails (~> 0.3.4)
   rails (= 4.2.4)
