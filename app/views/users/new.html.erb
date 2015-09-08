@@ -12,11 +12,15 @@
 <div class="col-xs-10 no-float center-block">
   <%= form_for @user do |f| %>
 
-    <!-- TODO: Check error handling -->
+    <!-- TODO: Check error handling for all validations -->
+    <!-- TODO: Keep the splat on the same line when there are errors -->
 
     <% if !@user.errors[:first_name].empty? %>
       <div class="alert alert-danger" role="alert">
-        <p> <%= error_check(:first_name) %> </p>
+        <p>
+          <span class="glyphicon glyphicon-exclamation-sign"></span>
+          <%= error_check(:first_name) %>
+        </p>
       </div>
     <% end %>
 
@@ -32,7 +36,10 @@
 
     <% if !@user.errors[:email].empty? %>
       <div class="alert alert-danger" role="alert">
-        <p> <%= error_check(:email) %> </p>
+        <p>
+          <span class="glyphicon glyphicon-exclamation-sign"></span>
+          <%= error_check(:email) %>
+        </p>
       </div>
     <% end %>
 
@@ -43,7 +50,10 @@
 
     <% if !@user.errors[:password].empty? %>
       <div class="alert alert-danger" role="alert">
-        <p> <%= error_check(:password) %> </p>
+        <p>
+          <span class="glyphicon glyphicon-exclamation-sign"></span>
+          <%= error_check(:password) %>
+        </p>
       </div>
     <% end %>
 
@@ -52,16 +62,19 @@
       <%= f.password_field :password, class: 'form-control' %>
     </div>
 
-    <% if !@user.errors[:confirm_password].empty? %>
+    <% if !@user.errors[:password_confirmation].empty? %>
       <div class="alert alert-danger" role="alert">
-        <p> <%= error_check(:confirm_password) %> </p>
+        <p>
+          <span class="glyphicon glyphicon-exclamation-sign"></span>
+          <%= error_check(:password_confirmation) %>
+        </p>
       </div>
     <% end %>
 
     <div class="form-group">
-      <%= f.label :confirm_password, "Confirm Password" %>
+      <%= f.label :password_confirmation, "Confirm Password" %>
       <span class="required">*</span>
-      <%= f.password_field :confirm_password, class: 'form-control' %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
     </div>
 
     <% unless flash[:notice] %>
