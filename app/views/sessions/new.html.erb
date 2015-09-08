@@ -1,0 +1,34 @@
+<h1 class="text-center">Log In</h1>
+
+<br><br>
+
+<% if flash[:notice] %>
+  <div class="col-xs-10 no-float center-block alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<div class="col-xs-10 no-float center-block">
+  <%= form_for(:session, url: sessions_path) do |f| %>
+
+    <!-- TODO: Keep the splat on the same line when there are errors -->
+
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+
+    <% unless flash[:notice] %>
+      <%= f.submit "Log In", class: 'btn btn-primary center-block' %>
+    <% else %>
+      <%= f.submit "Log In", class: 'btn btn-primary center-block',
+                               disabled: "disabled" %>
+    <% end %>
+  <% end %>
+</div>
