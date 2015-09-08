@@ -11,5 +11,22 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe UsersHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "error_check(attribute)" do
+    it "returns nil if there are no matching attributes" do
+      @user = build :user
+      expect(helper.error_check(:first_name)).to be nil
+    end
+
+    it "returns the error message of a specific attribute" do
+      @user = build :user, first_name: nil, email: nil
+      @user.save
+      expect(helper.error_check(:email)).to eq "Email can't be blank."
+    end
+
+    it "returns a string" do
+      @user = build :user, first_name: nil, email: nil
+      @user.save
+      expect(helper.error_check(:email)).to be_kind_of String
+    end
+  end
 end
