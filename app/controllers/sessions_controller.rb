@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
 
-  def new; end
+  def new
+    if session[:user_id]
+     flash[:notice] = "You're already logged in."
+    end
+  end
 
   def create # login
     if find_user && authenticate

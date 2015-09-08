@@ -1,6 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
+  describe "GET new" do
+    context "user is already logged in" do
+      it "sends a flash notice" do
+        user = create :user
+        session[:user_id] = user.id
+        get :new
+
+        expect(flash[:notice]).to eq "You're already logged in."
+      end
+    end
+  end
+
   describe "POST create" do
     context "valid login" do
       before :each do
