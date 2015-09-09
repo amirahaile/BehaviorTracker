@@ -1,3 +1,18 @@
 // Place all the styles related to the Locations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.success-mark {
+  background-color: green; // TODO: find an appealing green plz
+  height: 200px; // TODO: make this height responsive
+  border-radius: 50%;
+}
+
+.checkmark-glyph {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 90px;
+  color: white;
+}

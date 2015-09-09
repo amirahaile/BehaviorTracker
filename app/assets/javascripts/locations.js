@@ -32,9 +32,19 @@ function save_location(position) {
     var successMessage = $("<h2></h2>");
     successMessage.text("Sweet! Your location was saved.");
     successMessage.addClass("text-center");
-    
+
     var successMark = $("<div></div>");
-    successMark.addClass("success-mark");
+    successMark.addClass("col-xs-6")
+               .addClass("no-float")
+               .addClass("center-block")
+               .addClass("success-mark");
+
+    var checkmarkGlyph = $("<span><span>");
+    checkmarkGlyph.addClass("glyphicon")
+                  .addClass("glyphicon-ok")
+                  .addClass("checkmark-glyph");
+    checkmarkGlyph.attr("aria-hidden", "true");
+    successMark.append(checkmarkGlyph);
 
     $("body").append(successMessage).append(successMark);
   });
