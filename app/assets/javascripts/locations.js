@@ -7,7 +7,7 @@ $(function() {
     event.preventDefault();
 
     navigator.geolocation.getCurrentPosition(save_location, handle_error,
-      { enableHighAccuracy: true, timeout: 30000 }
+      { enableHighAccuracy: true, timeout: 5000 }
     );
   });
 });
@@ -49,8 +49,8 @@ function save_location(position) {
 
     $("body").append(successMessage).append(successMark);
 
-    // redirects
-    window.location.replace("/locations").delay(30000);
+    // redirects after 30 sec
+    setTimeout(function() { window.location.replace(url); }, 2500);
   });
 }
 
