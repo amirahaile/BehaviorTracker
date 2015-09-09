@@ -1,7 +1,9 @@
 class LocationsController < ApplicationController
   before_action :require_login, only: [:index]
 
-  def index; end
+  def index
+    @user = User.find(session[:user_id])
+  end
 
   def new; end
 
@@ -14,5 +16,11 @@ class LocationsController < ApplicationController
     # 500 error - missing template locations#create
     # NOTE: is 'render' right though?
     render :new
+  end
+
+  def destroy
+    location = Location.find(params[:id])
+    location.destroy
+    redirect_to locations_path
   end
 end

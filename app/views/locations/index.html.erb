@@ -1,1 +1,49 @@
-<h1>HEY IT WORKS!</h1>
+<h1 class="text-center">Saved Locations</h1>
+<br><br>
+<table class="table table-striped">
+  <tbody>
+    <thead>
+      <tr>
+        <th>
+          No.
+        </th>
+        <th>
+          Longitude
+        </th>
+        <th>
+          Latitude
+        </th>
+        <th>
+          Saved
+        </th>
+        <th>
+          Delete
+        </th>
+      </tr>
+    </thead>
+
+    <% @user.locations.each do |location| %>
+    <tr>
+      <th scope="row">
+        <%= counter(location, @user.locations) %>
+      </th>
+      <!-- TODO: Use real addresses instead -->
+      <td>
+        <%= location.longitude %>
+      </td>
+      <td>
+        <%= location.latitude %>
+      </td>
+      <td>
+        <%= location.created_at %>
+      </td>
+      <td class="text-center">
+        <%= button_to({ action: "destroy", id: location.id },
+                        method: :delete) do %>
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
