@@ -1,4 +1,7 @@
 class LocationsController < ApplicationController
+  before_action :require_login, only: [:index]
+
+  def index; end
 
   def new; end
 
@@ -9,7 +12,7 @@ class LocationsController < ApplicationController
     user.locations << location
 
     # 500 error - missing template locations#create
-    # is 'render' right though?
+    # NOTE: is 'render' right though?
     render :new
   end
 end

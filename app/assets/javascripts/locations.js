@@ -29,6 +29,7 @@ function save_location(position) {
     // https://developers.google.com/maps/documentation/javascript/geocoding
 
     // replaces it with a confirmation
+    // NOTE: Maybe this should be done in the HTML file and just toggle the display on and off…?
     var successMessage = $("<h2></h2>");
     successMessage.text("Sweet! Your location was saved.");
     successMessage.addClass("text-center");
@@ -47,6 +48,9 @@ function save_location(position) {
     successMark.append(checkmarkGlyph);
 
     $("body").append(successMessage).append(successMark);
+
+    // redirects
+    window.location.replace("/locations").delay(30000);
   });
 }
 
