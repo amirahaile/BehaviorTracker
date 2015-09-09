@@ -14,7 +14,9 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 @import "users";
+@import "locations";
 
 .no-float {
   float: none;
