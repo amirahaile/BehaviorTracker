@@ -1,16 +1,16 @@
 <h1 class="text-center">Find this Spot</h1>
 
-<p>
+<p class="text-center">
   Your location is (<%= @location.latitude %>, <%= @location.longitude %>).
 </p>
 
-<%= button_to "Start", id: 'watch' %>
+<%= button_tag "Start", id: 'watch' %>
 
 
 <!-- so JS can grab the information -->
-<div class="hidden" id="hidden1">
+<div class="hidden" id="latitude">
   <%= @location.latitude %>
 </div>
-<div class="hidden" id="hidden2">
+<div class="hidden" id="longitude">
   <%= @location.longitude %>
 </div>

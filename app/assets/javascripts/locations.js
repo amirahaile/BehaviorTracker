@@ -65,7 +65,16 @@ function save_location(position) {
 // every time it gets a new position
 function track_location(position) {
   // determine the distance between the saved location and this new position
+  var lat1  = parseFloat($.trim($("#latitude").text()));
+  var long1 = parseFloat($.trim($("#longitude").text()));
+  var location1 = { latitude: lat1, longitude: long1 };
+  var lat2  = position.coords.latitude;
+  var long2 = position.coords.longitude;
+  var location2 = { latitude: lat2, longitude: long2 };
+  console.log(location1, location2);
 
+  var distance = calcDistance(location1, location2); // miles to the hundredths
+  console.log(distance);
   // if it's closer, send a positive message (hot)
     // if it's within x feet of saved location give x message of intensity
       // change background gradient

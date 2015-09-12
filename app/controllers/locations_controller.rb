@@ -18,6 +18,10 @@ class LocationsController < ApplicationController
     render :new
   end
 
+  def show
+    @location = Location.find(params[:id])
+  end
+
   def destroy
     location = Location.find(params[:id])
     location.destroy
