@@ -29,10 +29,14 @@
       </th>
       <!-- TODO: Use real addresses instead -->
       <td>
-        <%= location.longitude %>
+        <%= link_to(location) do %>
+          <%= location.longitude %>
+        <% end %>
       </td>
       <td>
-        <%= location.latitude %>
+        <%= link_to(location) do %>
+          <%= location.latitude %>
+        <% end %>
       </td>
       <td>
         <%= location.created_at %>
