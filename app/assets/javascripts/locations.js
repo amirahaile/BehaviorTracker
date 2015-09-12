@@ -63,6 +63,7 @@ function save_location(position) {
 
 // WATCH LOCATION FOR GAMEPLAY
 // every time it gets a new position
+var distances = [];
 function track_location(position) {
   // determine the distance between the saved location and this new position
   var lat1  = parseFloat($.trim($("#latitude").text()));
@@ -71,22 +72,30 @@ function track_location(position) {
   var lat2  = position.coords.latitude;
   var long2 = position.coords.longitude;
   var location2 = { latitude: lat2, longitude: long2 };
-  console.log(location1, location2);
-
-  var distance = calcDistance(location1, location2); // miles to the hundredths
+  // returns miles to the hundredths
+  var distance = calcDistance(location1, location2);
   console.log(distance);
-  // if it's closer, send a positive message (hot)
-    // if it's within x feet of saved location give x message of intensity
-      // change background gradient
-      // change status message
-      // whatever animations
-  // if it's farther, send a negative message (cold)
-    // if it's within x feet of saved location give x message of intensity
-      // change background gradient
-      // change status message
-      // whatever animations
-  // if it's farther than the fail distance send a fail message
-  // if it's within x feet of saved location send success message
+  console.log(location2);
+  distances.push(distance);
+
+  // determines what type of message to send
+  var lastPosition = distances[distances.length - 2];
+  var currentPosition = distances[distances.length - 1];
+
+  {
+    // user is closer
+    if (currentPosition < lastPosition) {  }
+    // user is farther
+    if (currentPosition > lastPosition) {  }
+    // user found location
+    if (currentPosition < 0.009) {  }
+    // if user is farther than fail distance?
+  } unless (lastPosition === undefined);
+
+  // if it's within x feet of saved location give x message of intensity
+    // change background gradient
+    // change status message
+    // whatever animations
 }
 
 // thanks @segdeha - http://andrew.hedges.name/experiments/haversine/
