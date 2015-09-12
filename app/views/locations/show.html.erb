@@ -1,0 +1,16 @@
+<h1 class="text-center">Find this Spot</h1>
+
+<p>
+  Your location is (<%= @location.latitude %>, <%= @location.longitude %>).
+</p>
+
+<%= button_to "Start", id: 'watch' %>
+
+
+<!-- so JS can grab the information -->
+<div class="hidden" id="hidden1">
+  <%= @location.latitude %>
+</div>
+<div class="hidden" id="hidden2">
+  <%= @location.longitude %>
+</div>
