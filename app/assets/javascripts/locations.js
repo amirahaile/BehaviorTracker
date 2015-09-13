@@ -1,25 +1,31 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-// You can use CoffeeScript in this file: http://coffeescript.org/
-
 $(function() {
   $("#locate").click(function(event) {
     event.preventDefault();
-    navigator.geolocation.getCurrentPosition(save_location, handle_error,
+    navigator.geolocation.getCurrentPosition(saveLocation, handleError,
       { enableHighAccuracy: true, timeout: 5000 }
     );
   });
 
+  var watchNum;
+
   $("#watch").click(function(event) {
     event.preventDefault();
-    var watchNum = navigator.geolocation.watchPosition(
-      track_location, handle_error, { enableHighAccuracy: true }
+    watchNum = navigator.geolocation.watchPosition(
+      trackLocation, handleError, { enableHighAccuracy: true }
     );
+
+    $(this).remove();
+    $("#kill-tracker").removeClass("hidden");
+  });
+
+  $("#kill-tracker").click(function(event) {
+    event.preventDefault();
+    stopTracking("failure", watchNum);
   });
 });
 
 // SAVE TARGET LOCATION
-function save_location(position) {
+function saveLocation(position) {
   var url = "/locations";
   var coordinates = {
     latitude: position.coords.latitude,
@@ -64,38 +70,33 @@ function save_location(position) {
 // WATCH LOCATION FOR GAMEPLAY
 // every time it gets a new position
 var distances = [];
-function track_location(position) {
+function trackLocation(position) {
   // determine the distance between the saved location and this new position
   var lat1  = parseFloat($.trim($("#latitude").text()));
   var long1 = parseFloat($.trim($("#longitude").text()));
   var location1 = { latitude: lat1, longitude: long1 };
+
   var lat2  = position.coords.latitude;
   var long2 = position.coords.longitude;
   var location2 = { latitude: lat2, longitude: long2 };
   // returns miles to the hundredths
   var distance = calcDistance(location1, location2);
-  console.log(distance);
-  console.log(location2);
   distances.push(distance);
 
   // determines what type of message to send
   var lastPosition = distances[distances.length - 2];
   var currentPosition = distances[distances.length - 1];
 
+  // NOTE: Might need to set a minimum difference between the last & current distance so that you're not firing off messages every second and run out?
   {
     // user is closer
-    if (currentPosition < lastPosition) {  }
+    if (currentPosition < lastPosition) { moved("closer"); }
     // user is farther
-    if (currentPosition > lastPosition) {  }
-    // user found location
-    if (currentPosition < 0.009) {  }
+    if (currentPosition > lastPosition) { moved("farther"); }
+    // user found location - 0.009 is arbitrary
+    if (currentPosition < 0.009) { stopTracking("success"); }
     // if user is farther than fail distance?
-  } unless (lastPosition === undefined);
-
-  // if it's within x feet of saved location give x message of intensity
-    // change background gradient
-    // change status message
-    // whatever animations
+  } if (lastPosition !== undefined);
 }
 
 // thanks @segdeha - http://andrew.hedges.name/experiments/haversine/
@@ -134,8 +135,8 @@ function round(num) {
   return Math.round(num * 1000) / 1000;
 }
 
-// EROR HANDLING
-function handle_error(error) {
+// ERROR HANDLING
+function handleError(error) {
   console.log(error.code);
   // TODO: error handling for GPS finder
   if (error.code == 1) {
