@@ -48,4 +48,21 @@ RSpec.describe SessionsController, type: :controller do
       end
     end
   end
+
+  describe "DELETE #destroy" do
+    before :each do
+      user = create :user
+      session[:user_id] = user.id
+    end
+
+    it "kills the session" do
+      get :destroy, id: session[:user_id]
+      expect(session[:user_id]).to be nil
+    end
+
+    it "redirects home" do
+      get :destroy, id: session[:user_id]
+      expect(response).to redirect_to root_path
+    end
+  end
 end
