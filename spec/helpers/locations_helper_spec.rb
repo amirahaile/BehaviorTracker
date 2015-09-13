@@ -11,5 +11,43 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe LocationsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#counter(item, items)" do
+    before :each do
+      @locations = [];
+
+      5.times do
+        location = create :location
+        @locations.push(location)
+      end
+
+      @location = @locations.sample
+
+    end
+
+    it "returns the placenumber the item holds in the array" do
+      placenumber = @locations.index(@location) + 1
+      expect(helper.counter(@location, @locations)).to eq placenumber
+    end
+
+    context "when a location has been deleted" do
+      it "returns the placenumber the item holds in the array" do
+        @locations.pop
+        location = @locations.sample
+        placenumber = @locations.index(location) + 1
+
+        expect(helper.counter(location, @locations)).to eq placenumber
+      end
+    end
+
+    context "when a location has been added" do
+      it "returns the placenumber the item holds in the array" do
+        new_location = create :location
+        @locations.push(new_location)
+        location = @locations.sample
+        placenumber = @locations.index(location) + 1
+        
+        expect(helper.counter(location, @locations)).to eq placenumber
+      end
+    end
+  end
 end
